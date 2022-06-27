@@ -66,10 +66,14 @@
                 </thead>
                 <tbody>
                   <tr *ngFor="let obj of applicationData">
-                    <td> <input type="checkbox" (click)="applicationCheckEvent(obj)" (change)="onChange($event)" [checked]="isSelectedName==obj.name"> </td>
-                    <td> <input type="text" [value]="obj.entityId" (change)="editEntityEvent($event)" [disabled]="isSelectedName!=obj.name" id="entityId" name="entityId"></td>
-                    <td> <input type="text" [value]="obj.name" (change)="editNameEvent($event)" [disabled]="isSelectedName!=obj.name" id="applicationName" name="applicationName" ></td>
-                    <td> <input type="text" [value]="obj.entityId" (change)="editCertEvent($event)" [disabled]="isSelectedName!=obj.name" id="certExpiry" name="certExpiry"></td>
+                    <td> <input type="checkbox" (click)="applicationCheckEvent(obj)" (change)="onChange($event)"
+                        [checked]="isSelectedName==obj.name"> </td>
+                    <td> <input type="text" [value]="obj.entityId" (change)="editEntityEvent($event)"
+                        [disabled]="isSelectedName!=obj.name" id="entityId" name="entityId"></td>
+                    <td> <input type="text" [value]="obj.name" (change)="editNameEvent($event)"
+                        [disabled]="isSelectedName!=obj.name" id="applicationName" name="applicationName"></td>
+                    <td> <input type="text" [value]="obj.entityId" (change)="editCertEvent($event)"
+                        [disabled]="isSelectedName!=obj.name" id="certExpiry" name="certExpiry"></td>
                   </tr>
                 </tbody>
               </table>
@@ -82,8 +86,10 @@
 
       </div>
       <div class="text-center" *ngIf="ifNoData">
-        <button type="button" class="btn btn-primary" (click)="updateCert()" [disabled]="!isApplicationButtonEnable">Update Cert</button>
-        <button type="button" class="btn btn-primary ml-2" (click)="revertCert()" [disabled]="!isApplicationButtonEnable">Revert Cert</button>
+        <button type="button" class="btn btn-primary" (click)="updateCert()"
+          [disabled]="!isApplicationButtonEnable">Update Cert</button>
+        <button type="button" class="btn btn-primary ml-2" (click)="revertCert()"
+          [disabled]="!isApplicationButtonEnable">Revert Cert</button>
       </div>
 
     </section>

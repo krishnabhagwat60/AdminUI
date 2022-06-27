@@ -5,9 +5,8 @@
     <!-- <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
       (click)="visibleMenu('togale')" *ngIf="isShow"></i>
     <i class="fa fa-close toggle-sidebar-btn" *ngIf="!isShow" (click)="visibleMenu('togale')"></i> -->
-
-    <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
-      (click)="clickEvent()"></i>
+    <i class="bi bi-list toggle-sidebar-btn" *ngIf="isShow" (click)="clickEvent()"></i>
+    <i class="bi bi-x toggle-sidebar-btn" *ngIf="!isShow" (click)="clickEvent()"></i>
 
     <a href="index.html" class="logo ml-5 d-flex align-items-center">
       <span class="d-none d-lg-block">Sagar</span>
@@ -85,24 +84,27 @@
 <!-- End Sidebar-->
 <aside id="sidebar" class="sidebar" [ngClass]="status ? 'darSideBar' : 'genisSideBar'">
 
-  <ul class="sidebar-nav" id="sidebar-nav">
+  <ul class="sidebar-nav mt-5" id="sidebar-nav">
     <li class="nav-item mt-4">
-      <a class="nav-link" routerLink="./home" routerLinkActive="active">
+      <a class="nav-link" routerLink="/home" routerLinkActive="active">
         <i class="bi bi-house-fill"></i>
         <span>Home</span>
       </a>
     </li>
     <!-- End Dashboard Nav -->
-
-    <li class="nav-item">
-      <a class="nav-link" routerLink="./form" routerLinkActive="active">
+    <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active"
+        [routerLinkActiveOptions]={exact:true}> <i class="bi bi-code-square"></i>
+        <span>Form</span>
+      </a></li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" routerLink="form" routerLinkActive="active">
         <i class="bi bi-code-square"></i>
         <span>Form</span>
       </a>
-    </li>
+    </li> -->
     <!-- End Profile Page Nav -->
     <li class="nav-item">
-      <a class="nav-link" routerLink="./contact" routerLinkActive="active">
+      <a class="nav-link" routerLink="contact" routerLinkActive="active">
         <i class="bi bi-envelope"></i>
         <span>Contact</span>
       </a>

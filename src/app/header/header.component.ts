@@ -8,6 +8,7 @@ import { MatSidenav } from '@angular/material/sidenav';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+
   isShow: boolean = true;
   isMen = true;
   isWomen = false;
@@ -23,8 +24,8 @@ export class HeaderComponent implements OnInit {
     var el = document.getElementById("sidebar");
     el?.classList.toggle("toggle-sidebar")
 
-    // this.isShow = !this.isShow;
-    // this.isMen = !this.isMen;
+    this.isShow = !this.isShow;
+    this.isMen = !this.isMen;
   }
   // ngAfterViewInit() {
   //   this.observer.observe(['(max-width: 8000px)']).subscribe((res) => {
@@ -47,6 +48,9 @@ export class HeaderComponent implements OnInit {
   status: boolean = false;
   statusLink: boolean = false;
   clickEvent() {
+    this.isShow = !this.isShow;
+    this.isMen = !this.isMen;
+    
     this.status = !this.status;
     //this.statusLink = !this.statusLink;
 
@@ -58,4 +62,5 @@ export class HeaderComponent implements OnInit {
       this.statusLink = true;
     }
   }
+
 }
