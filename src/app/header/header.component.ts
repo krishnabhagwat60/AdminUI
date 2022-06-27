@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit, VERSION, ViewChild } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -11,26 +13,35 @@ export class HeaderComponent implements OnInit {
   isWomen = false;
   hidden: boolean = true;
   brand: boolean = false;
-  constructor() { }
-
+  constructor(private observer: BreakpointObserver) { }
+  expanded: boolean = true;
   ngOnInit(): void {
   }
+  @ViewChild(MatSidenav)
+  sidenav!: MatSidenav;
   visibleMenu(value: any) {
-    // if (value == "togale") {
-    //   this.isShow = !this.isShow;
-    //   this.hidden = !this.hidden;
-    //   this.brand = !this.brand;
-    // }
-    // if (value == 'men') {
-    //   this.isMen = true;
-    //   this.isWomen = false;
-    // } else {
-    //   this.isMen = false;
-    //   this.isWomen = true;
-    // }
+    var el = document.getElementById("sidebar");
+    el?.classList.toggle("toggle-sidebar")
+
     this.isShow = !this.isShow;
     this.isMen = !this.isMen;
   }
+  // ngAfterViewInit() {
+  //   this.observer.observe(['(max-width: 8000px)']).subscribe((res) => {
+  //     if (res.matches) {
+  //       this.sidenav.mode = 'over';
+  //       this.sidenav.close();
+  //     } else {
+  //       this.sidenav.mode = 'side';
+  //       this.sidenav.open();
+  //     }
+  //   });
+  // }
   // visib
 
+  // if (select('.toggle-sidebar-btn')) {
+  //   on('click', '.toggle-sidebar-btn', function(e) {
+  //     select('body').classList.toggle('toggle-sidebar')
+  //   })
+  // }
 }
