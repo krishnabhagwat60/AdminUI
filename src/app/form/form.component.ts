@@ -47,11 +47,10 @@ export class FormComponent implements OnInit {
     this.ifNoData = true;
     this.certHeaderForm = new FormGroup({
       applicationId: new FormControl('', Validators.required),
-      environment: new FormControl(''),
+      environment: new FormControl('', Validators.required),
       numberProd: new FormControl(''),
       certExpiry: new FormControl(''),
     });
-    this.getCertDetails();
   }
 
   getControl(name: string): string {
@@ -59,13 +58,20 @@ export class FormComponent implements OnInit {
   }
 
   applicationIdOnChange() {
+    debugger
+    if(this.certHeaderForm.get('applicationId')?.value.length>0 && this.certHeaderForm.get('environment')?.value.length>0){
+      this.getCertDetails(this.certHeaderForm.get('applicationId')?.value)
+    }
+    else{
+      this.applicationData=[];
+    }
     debugger;
-    this.certHeaderForm.get('applicationId')?.valueChanges.subscribe((x) => {
-      this.appId = x;
-      if (this.certHeaderForm.touched || this.certHeaderForm.valid) {
-        this.toastr.error('please give valid information');
-      }
-    });
+    // this.certHeaderForm.get('applicationId')?.valueChanges.subscribe((x) => {
+    //   this.appId = x;
+    //   if (this.certHeaderForm.touched || this.certHeaderForm.valid) {
+    //     this.toastr.error('please give valid information');
+    //   }
+    // });
     //   if(!event.value.touched || !event.value.valid){
     //     this.toastr.error("please give valid information");
     // }
@@ -101,71 +107,22 @@ export class FormComponent implements OnInit {
         name: '32rt23fr234f4f',
         entityId: 'https://lab.opopopo.4grfmr.com/',
         id: 'hfghgfhhhhgf',
-      },
-      {
-        name: '32r1313131t23fr234f4f',
-        entityId: 'https://lab.gfghfhf.4grfmr.com/',
-        id: 'hfjjfgjgjfjjfgjgfjfhgfhhhhgf',
-      },
-      {
-        name: '7567567567',
-        entityId: 'https://lab.cbcbcb.4grfmr.com/',
-        id: 'popopopopopo',
-      },
-      {
-        name: '0505050505050',
-        entityId: 'https://lab.fghgfhfhf.4grfmr.com/',
-        id: 'iyiyiyiyiyiyiy',
-      },
-      {
-        name: '91919191919',
-        entityId: 'https://lab.fghfhvsdvc.4grfmr.com/',
-        id: 'uiuiuiuiuiuiuii',
-      },
-      {
-        name: '88889898989898',
-        entityId: 'https://lab.home.4grfmr.com/',
-        id: 'tetetetetetet',
-      },
-      {
-        name: '6565656565656',
-        entityId: 'https://lab.asda.4grfmr.com/',
-        id: 'weewewewewewewe',
-      },
-      {
-        name: 'ytwewewwewew',
-        entityId: 'https://lab.dasdaerw.4grfmr.com/',
-        id: '880808080',
-      },
-      {
-        name: 'ddadadsadsads',
-        entityId: 'https://lab.aeaea.4grfmr.com/',
-        id: '555505',
-      },
-      {
-        name: 'yyuyuyuyuyuyu',
-        entityId: 'https://lab.aewe.4grfmr.com/',
-        id: '55455455454545',
-      },
-      {
-        name: 'pipipipip',
-        entityId: 'https://lab.ptptpt.4grfmr.com/',
-        id: '4454564',
-      },
-      {
-        name: 'popooasas',
-        entityId: 'https://lab.googogo.4grfmr.com/',
-        id: '9090909',
-      },
-      {
-        name: 'tuutututu',
-        entityId: 'https://lab.google.4grfmr.com/',
-        id: '80825',
-      },
+      }
     ];
 
     this.applicationData = data;
+    if (this.applicationData && this.applicationData.length > 0) {
+      this.applicationData.forEach((element, index) => {
+        if (element.id == 'izgkjfgafgsajfg') {
+          // certExpiry
+          this.applicationData[index]["certExpiry"] ='Jan 20 2022';
+        }
+        else{
+          this.applicationData[index]["certExpiry"] ='may 20 , 2023';
+        }
+      });
 
+    }
     this.certService.getCertDetails(filedata).subscribe(
       (data: any) => {
         //this.certList = data;
