@@ -23,8 +23,8 @@ export class HeaderComponent implements OnInit {
     var el = document.getElementById("sidebar");
     el?.classList.toggle("toggle-sidebar")
 
-    this.isShow = !this.isShow;
-    this.isMen = !this.isMen;
+    // this.isShow = !this.isShow;
+    // this.isMen = !this.isMen;
   }
   // ngAfterViewInit() {
   //   this.observer.observe(['(max-width: 8000px)']).subscribe((res) => {
@@ -44,4 +44,18 @@ export class HeaderComponent implements OnInit {
   //     select('body').classList.toggle('toggle-sidebar')
   //   })
   // }
+  status: boolean = false;
+  statusLink: boolean = false;
+  clickEvent() {
+    this.status = !this.status;
+    //this.statusLink = !this.statusLink;
+
+    if (this.statusLink) {
+      setTimeout(() => {
+        this.statusLink = false;
+      }, 230);
+    } else {
+      this.statusLink = true;
+    }
+  }
 }

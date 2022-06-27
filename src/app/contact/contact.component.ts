@@ -8,8 +8,20 @@ import { Component, OnInit } from '@angular/core';
 export class ContactComponent implements OnInit {
 
   constructor() { }
-
   ngOnInit(): void {
   }
+  status: boolean = false;
+  statusLink: boolean = false;
+  clickEvent() {
+    this.status = !this.status;
+    //this.statusLink = !this.statusLink;
 
+    if (this.statusLink) {
+      setTimeout(() => {
+        this.statusLink = false;
+      }, 230);
+    } else {
+      this.statusLink = true;
+    }
+  }
 }

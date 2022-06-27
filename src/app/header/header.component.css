@@ -617,7 +617,6 @@ h6 {
     width: 300px;
     z-index: 996;
     transition: all 0.3s;
-    padding: 20px;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: #aab7cf transparent;
@@ -1039,3 +1038,19 @@ h6 {
     width: 20rem;
     border: 2px solid #e4e4e4
 }
+.sidebarMenu{
+    background-color: #088afe;
+    color: #fff;
+    width: auto;
+    height: 100vh;
+  }
+  .genisSideBar{
+    transition: .40s;
+  }
+  .darSideBar{
+    width: 0;
+    transition: .40s;
+  }
+  
+  
+ 
