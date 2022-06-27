@@ -361,11 +361,7 @@ h6 {
     color: #4154f1;
 }
 
-.nav-tabs-bordered .nav-link.active {
-    background-color: #fff;
-    color: #4154f1;
-    border-bottom: 2px solid #4154f1;
-}
+
 
 /*--------------------------------------------------------------
   # Header
@@ -713,7 +709,7 @@ h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: #fff;
     transition: 0.3;
     padding: 10px 15px;
     border-radius: 4px;
@@ -724,7 +720,7 @@ h6 {
     align-items: center;
     font-size: 15px;
     font-weight: 600;
-    color: #000;
+    color: #004a9f;
     transition: 0.3;
     padding: 10px 15px;
     border-radius: 4px;
@@ -734,25 +730,8 @@ h6 {
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
 }
 
-.sidebar-nav .nav-link.collapsed {
-    color: #fff;
-}
-
-.sidebar-nav .nav-link.collapsed i {
-    color: #fff;
-}
-
-.sidebar-nav .nav-link:hover {
-    color: #4154f1;
-    background: #f6f9ff;
-}
-
-.sidebar-nav .nav-link:hover i {
-    color: #4154f1;
-}
 
 .sidebar-nav .nav-link .bi-chevron-down {
     margin-right: 0;
