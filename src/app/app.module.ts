@@ -42,17 +42,17 @@ import { CertService } from './services/cert.service';
       positionClass: 'toast-top-right',
       preventDuplicates: true,
       closeButton: true,
-   }),
+    }),
     NgxLoadingModule.forRoot({}),
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
     MatIconModule,
-    MatDividerModule, ReactiveFormsModule,
-    HttpClientModule
-
+    MatDividerModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [CertService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
