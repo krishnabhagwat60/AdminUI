@@ -20,6 +20,7 @@ import { FormComponent } from './form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactComponent } from './contact/contact.component';
+import { CertService } from './services/cert.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,12 @@ import { ContactComponent } from './contact/contact.component';
     AppRoutingModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      closeButton: true
+   }),
     NgxLoadingModule.forRoot({}),
     MatToolbarModule,
     MatSidenavModule,
@@ -44,7 +51,7 @@ import { ContactComponent } from './contact/contact.component';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [CertService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
