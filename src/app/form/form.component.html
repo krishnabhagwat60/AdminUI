@@ -68,11 +68,11 @@
                   <tr *ngFor="let obj of applicationData">
                     <td> <input type="checkbox" (click)="applicationCheckEvent(obj)" (change)="onChange($event)" class="form-control"
                         [checked]="isSelectedName==obj.name"> </td>
-                    <td> <input type="text" autocomplate="off" [value]="obj.entityId" (change)="editEntityEvent($event)" id="entityId" class="form-control"
+                    <td> <input type="text" autocomplate="off" disabled [value]="obj.entityId" (change)="editEntityEvent($event)" id="entityId" class="form-control"
                         name="entityId"></td>
-                    <td> <input type="text" autocomplate="off" [value]="obj.name" (change)="editNameEvent($event)" id="applicationName" class="form-control"
+                    <td> <input type="text" autocomplate="off" disabled [value]="obj.name" (change)="editNameEvent($event)" id="applicationName" class="form-control"
                         name="applicationName"></td>
-                    <td> <input type="text" autocomplate="off" [value]="obj.certExpiry" (change)="editCertEvent($event)" id="certExpiry" class="form-control"
+                    <td> <input type="text" autocomplate="off"disabled [value]="obj.certExpiry" (change)="editCertEvent($event)" id="certExpiry" class="form-control"
                         name="certExpiry"></td>
                   </tr>
                 </tbody>
