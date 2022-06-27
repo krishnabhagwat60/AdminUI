@@ -2,16 +2,12 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
   <div class="d-flex align-items-center justify-content-between">
-    <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
+    <!-- <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
       (click)="visibleMenu('togale')" *ngIf="isShow"></i>
-    <i class="fa fa-close toggle-sidebar-btn" *ngIf="!isShow" (click)="visibleMenu('togale')"></i>
+    <i class="fa fa-close toggle-sidebar-btn" *ngIf="!isShow" (click)="visibleMenu('togale')"></i> -->
 
-    <!-- <div *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
-      <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
-        *ngIf="!sidenav.opened"></i>
-      <i class="fa fa-close toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
-        *ngIf="sidenav.opened"></i>
-    </div> -->
+    <i class="fa fa-bars toggle-sidebar-btn" aria-expanded="false" aria-label="Toggle navigation"
+      (click)="clickEvent()"></i>
 
     <a href="index.html" class="logo ml-5 d-flex align-items-center">
       <span class="d-none d-lg-block">Sagar</span>
@@ -85,7 +81,9 @@
 </header><!-- End Header -->
 <!-- ======= Sidebar ======= -->
 <!-- *ngIf="isMen" -->
-<aside id="sidebar" class="sidebar" *ngIf="isMen">
+
+<!-- End Sidebar-->
+<aside id="sidebar" class="sidebar" [ngClass]="status ? 'darSideBar' : 'genisSideBar'">
 
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item mt-4">
@@ -112,5 +110,4 @@
     <!-- End F.A.Q Page Nav -->
   </ul>
 </aside>
-<!-- End Sidebar-->
 <app-sidebar></app-sidebar>

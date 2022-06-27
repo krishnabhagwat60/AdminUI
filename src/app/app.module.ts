@@ -29,6 +29,7 @@ import { CertService } from './services/cert.service';
     HomeComponent,
     FormComponent,
     ContactComponent,
+    
   ],
   imports: [
     BrowserModule,
