@@ -21,19 +21,13 @@
   <div class="search-bar ml-auto">
     Web Designer
   </div><!-- End Search Bar -->
-
   <nav class="header-nav ml-auto">
     <ul class="d-flex align-items-center">
 
-      <li class="nav-item d-block d-lg-none">
-        <!-- <a class="nav-link nav-icon search-bar-toggle " href="#">
-          <i class="bi bi-search"></i>
-        </a> -->
-      </li><!-- End Search Icon-->
-
       <li class="nav-item dropdown pe-3">
 
-        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <span class="d-md-block dropdown-toggle ps-2">K. Anderson</span>
         </a><!-- End Profile Iamge Icon -->
 
@@ -95,7 +89,7 @@
 
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item mt-4">
-      <a class="nav-link collapsed" routerLink="./home">
+      <a class="nav-link collapsed" routerLink="./home" routerLinkActive="active">
         <i class="bi bi-house-fill"></i>
         <span>Home</span>
       </a>
@@ -103,14 +97,14 @@
     <!-- End Dashboard Nav -->
 
     <li class="nav-item">
-      <a class="nav-link active" href="users-profile.html">
+      <a class="nav-link" routerLink="./form"  routerLinkActive="active">
         <i class="bi bi-code-square"></i>
         <span>Form</span>
       </a>
     </li>
     <!-- End Profile Page Nav -->
     <li class="nav-item">
-      <a class="nav-link collapsed" href="pages-faq.html">
+      <a class="nav-link collapsed" routerLink="./contact" routerLinkActive="active">
         <i class="bi bi-envelope"></i>
         <span>Contact</span>
       </a>
@@ -120,5 +114,3 @@
 </aside>
 <!-- End Sidebar-->
 <app-sidebar></app-sidebar>
-<app-home></app-home>
-<app-form></app-form>
