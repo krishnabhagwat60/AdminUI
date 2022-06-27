@@ -29,6 +29,14 @@ export class FormComponent implements OnInit {
   ifNoData!: Boolean;
   appId!: string;
   applicationid!: string;
+  applicationData: any[] = [];
+  isChecked: any;
+  isCheckedName: any;
+  isSelectedName: any;
+  entityId: any;
+  applicationName: any;
+  certExpiry: any;
+  isApplicationButtonEnable: any;
   constructor(
     private certService: CertService,
     private fb: FormBuilder,
@@ -43,6 +51,7 @@ export class FormComponent implements OnInit {
       numberProd: new FormControl(''),
       certExpiry: new FormControl(''),
     });
+    this.getCertDetails();
   }
 
   getControl(name: string): string {
@@ -70,7 +79,7 @@ export class FormComponent implements OnInit {
   //   });
   // }
 
-  getCertDetails(applicationId: string) {
+  getCertDetails(applicationId?: string) {
     let filedata = new AppData(
       this.certHeaderForm.get('applicationId')?.value,
       'a123456'
@@ -154,6 +163,9 @@ export class FormComponent implements OnInit {
         id: '80825',
       },
     ];
+
+    this.applicationData = data;
+
     this.certService.getCertDetails(filedata).subscribe(
       (data: any) => {
         //this.certList = data;
@@ -211,6 +223,28 @@ export class FormComponent implements OnInit {
         this.ifNoData = true;
       }
     );
+  }
+
+  applicationCheckEvent(event: any) {
+    debugger;
+    console.log(event);
+    this.isSelectedName = event.name;
+  }
+
+  onChange(event: any) {
+    this.isApplicationButtonEnable = event.target.checked;
+  }
+
+  editEntityEvent(event: any) {
+    this.entityId = event.target.value;
+  }
+
+  editNameEvent(event: any) {
+    this.applicationName = event.target.value;
+  }
+
+  editCertEvent(event: any) {
+    this.certExpiry = event.target.value;
   }
 
   revertCert() {
