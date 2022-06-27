@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ICert } from '../models/cert.model';
 import { ToastrService } from 'ngx-toastr';
 import { AppData } from '../models/cert.app.model';
-import { NotificationService } from '../NotificationService';
 import { CertService } from '../services/cert.service';
 
 @Component({
@@ -21,7 +20,7 @@ export class FormComponent implements OnInit {
   ifNoData!: Boolean;
   appId!: string;
   applicationid!: string;
-
+  isDataExist:boolean=false;
   constructor(
     private certService: CertService,
     private fb: FormBuilder,
@@ -88,7 +87,6 @@ export class FormComponent implements OnInit {
   updateCert() {
     let filedata = new AppData(this.certForm.get("applicationId")?.value, "a123456");
     this.loading = true;
-
 
     this.certService.updateCert(filedata).subscribe((data:any) => {
       //this.certList = data;
