@@ -675,11 +675,7 @@ h6 {
         left: 300px;
     }
 }
-@media (max-width: 1198px) {
-    .sidebar {
-        display: none;
-    }
-}
+
 .sidebar-nav {
     padding: 0;
     margin: 0;
