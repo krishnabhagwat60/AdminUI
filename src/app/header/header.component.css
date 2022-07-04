@@ -5,9 +5,11 @@
 * License: https://bootstrapmade.com/license/
 */
 
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 :root {
     scroll-behavior: smooth;
 }
@@ -37,9 +39,11 @@ h6 {
     font-family: "Nunito", sans-serif;
 }
 
+
 /*--------------------------------------------------------------
   # Main
   --------------------------------------------------------------*/
+
 #main {
     margin-top: 60px;
     padding: 20px 30px;
@@ -52,9 +56,11 @@ h6 {
     }
 }
 
+
 /*--------------------------------------------------------------
   # Page Title
   --------------------------------------------------------------*/
+
 .pagetitle {
     margin-bottom: 10px;
 }
@@ -66,9 +72,11 @@ h6 {
     color: #012970;
 }
 
+
 /*--------------------------------------------------------------
   # Back to top button
   --------------------------------------------------------------*/
+
 .back-to-top {
     position: fixed;
     visibility: hidden;
@@ -99,10 +107,14 @@ h6 {
     opacity: 1;
 }
 
+
 /*--------------------------------------------------------------
   # Override some default Bootstrap stylings
   --------------------------------------------------------------*/
+
+
 /* Dropdown menus */
+
 .dropdown-menu {
     border-radius: 4px;
     padding: 10px 0;
@@ -172,11 +184,9 @@ h6 {
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
-
     0% {
         opacity: 0;
     }
@@ -186,17 +196,17 @@ h6 {
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
-
     0% {
         opacity: 0;
     }
 }
 
+
 /* Light Backgrounds */
+
 .bg-primary-light {
     background-color: #cfe2ff;
     border-color: #cfe2ff;
@@ -232,7 +242,9 @@ h6 {
     border-color: #d3d3d4;
 }
 
+
 /* Card */
+
 .card {
     margin-bottom: 30px;
     border: none;
@@ -270,14 +282,18 @@ h6 {
     background-color: rgba(255, 255, 255, 0.6);
 }
 
+
 /* Alerts */
+
 .alert-heading {
     font-weight: 500;
     font-family: "Poppins", sans-serif;
     font-size: 20px;
 }
 
+
 /* Close Button */
+
 .btn-close {
     background-size: 25%;
 }
@@ -287,7 +303,9 @@ h6 {
     box-shadow: none;
 }
 
+
 /* Accordion */
+
 .accordion-item {
     border: 1px solid #ebeef4;
 }
@@ -319,7 +337,9 @@ h6 {
     font-size: 15px;
 }
 
+
 /* Breadcrumbs */
+
 .breadcrumb {
     font-size: 14px;
     font-family: "Nunito", sans-serif;
@@ -345,7 +365,9 @@ h6 {
     font-weight: 600;
 }
 
+
 /* Bordered Tabs */
+
 .nav-tabs-bordered {
     border-bottom: 2px solid #ebeef4;
 }
@@ -362,10 +384,10 @@ h6 {
 }
 
 
-
 /*--------------------------------------------------------------
   # Header
   --------------------------------------------------------------*/
+
 .logo {
     line-height: 1;
 }
@@ -383,6 +405,7 @@ h6 {
 
 .logo span {
     font-size: 26px;
+    font-weight: 700;
     color: #fff;
     font-family: "Nunito", sans-serif;
 }
@@ -392,7 +415,7 @@ h6 {
     z-index: 997;
     height: 60px;
     box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-    background-color: #004a9f;
+    background-color: #222629!important;
     padding-left: 20px;
     /* Toggle Sidebar Button */
     /* Search Bar */
@@ -404,7 +427,6 @@ h6 {
     cursor: pointer;
     color: #fff;
 }
-
 
 .header .search-bar {
     min-width: 360px;
@@ -426,7 +448,6 @@ h6 {
         visibility: hidden;
         opacity: 0;
     }
-
     .header .search-bar-show {
         top: 60px;
         visibility: visible;
@@ -435,7 +456,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
     #main,
     #footer {
         margin-left: 300px;
@@ -475,9 +495,11 @@ h6 {
     color: #012970;
 }
 
+
 /*--------------------------------------------------------------
   # Header Nav
   --------------------------------------------------------------*/
+
 .header-nav ul {
     list-style: none;
 }
@@ -604,6 +626,7 @@ h6 {
     background-color: #f6f9ff;
 }
 
+
 /*--------------------------------------------------------------
 # Sidebar
 --------------------------------------------------------------*/
@@ -620,11 +643,10 @@ h6 {
     scrollbar-width: thin;
     scrollbar-color: #aab7cf transparent;
     box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-    background-color: #004a9f;
+    background-color: green;
     border-radius: 10px;
     height: calc(100vh - 80px);
 }
-
 
 .sidebar::-webkit-scrollbar {
     width: 5px;
@@ -643,7 +665,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
     #main,
     #footer {
         margin-left: 300px;
@@ -657,12 +678,10 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
     .toggle-sidebar #main,
     .toggle-sidebar #footer {
         margin-left: 0 !important;
     }
-
     .toggle-sidebar .sidebar {
         left: -300px !important;
     }
@@ -687,7 +706,9 @@ h6 {
 }
 
 .sidebar-nav .nav-item {
-    padding: 10px;
+    /* margin-bottom: 10px;
+    padding: 10px; */
+    margin-right: 20px;
 }
 
 .sidebar-nav .nav-heading {
@@ -706,6 +727,18 @@ h6 {
     color: #fff;
     transition: 0.3;
     border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.sidebar-nav .active:before {
+    content: "";
+    width: 5px;
+    height: 100%;
+    background: #222629!important;
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .sidebar-nav .active {
@@ -715,16 +748,17 @@ h6 {
     font-weight: 600;
     color: #004a9f;
     transition: 0.3;
-    padding: 10px 15px;
-    border-radius: 4px;
+    padding: 0.8rem 10px 0.8rem 1.188rem;
+    height: 46px;
+    border-radius: 0 100px 100px 0;
     background: #f6f9ff;
+    position: relative;
 }
 
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
 }
-
 
 .sidebar-nav .nav-link .bi-chevron-down {
     margin-right: 0;
@@ -802,7 +836,6 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
     #main,
     #footer {
         margin-left: 300px;
@@ -810,17 +843,20 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-
     .toggle-sidebar #main,
     .toggle-sidebar #footer {
         margin-left: 0;
     }
 }
 
+
 /*--------------------------------------------------------------
   # Dashboard
   --------------------------------------------------------------*/
+
+
 /* Filter dropdown */
+
 .dashboard .filter {
     position: absolute;
     right: 0px;
@@ -858,7 +894,9 @@ h6 {
     padding: 8px 15px;
 }
 
+
 /* Info Cards */
+
 .dashboard .info-card {
     padding-bottom: 10px;
 }
@@ -895,7 +933,9 @@ h6 {
     background: #ffecdf;
 }
 
+
 /* Activity */
+
 .dashboard .activity {
     font-size: 14px;
 }
@@ -942,7 +982,9 @@ h6 {
     padding-bottom: 0;
 }
 
+
 /* News & Updates */
+
 .dashboard .news .post-item+.post-item {
     margin-top: 15px;
 }
@@ -975,7 +1017,9 @@ h6 {
     margin-left: 95px;
 }
 
+
 /* Recent Sales */
+
 .dashboard .recent-sales {
     font-size: 14px;
 }
@@ -996,7 +1040,9 @@ h6 {
     padding: 10px 0 0 0;
 }
 
+
 /* Top Selling */
+
 .dashboard .top-selling {
     font-size: 14px;
 }
@@ -1036,19 +1082,19 @@ h6 {
     width: 20rem;
     border: 2px solid #e4e4e4
 }
-.sidebarMenu{
+
+.sidebarMenu {
     background-color: #088afe;
     color: #fff;
     width: auto;
     height: 100vh;
-  }
-  .genisSideBar{
+}
+
+.genisSideBar {
     transition: .40s;
-  }
-  .darSideBar{
+}
+
+.darSideBar {
     width: 0;
     transition: .40s;
-  }
-  
-  
- 
+}

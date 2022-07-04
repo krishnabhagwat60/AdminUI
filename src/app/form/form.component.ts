@@ -9,7 +9,8 @@ import { ICert } from '../models/cert.model';
 import { ToastrService } from 'ngx-toastr';
 import { AppData } from '../models/cert.app.model';
 import { CertService } from '../services/cert.service';
-
+import { TYPE } from '../values.constants';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -22,7 +23,7 @@ export class FormComponent implements OnInit {
   certList!: ICert;
   certHeaderForm!: FormGroup;
   environments: any = [
-    { id: 'QAProd', text: 'QA / Prod' },
+    // { id: 'QAProd', text: 'QA / Prod' },
     { id: 'qa', text: 'QA' },
     { id: 'prod', text: 'Prod' },
   ];
@@ -33,25 +34,47 @@ export class FormComponent implements OnInit {
   isChecked: any;
   isCheckedName: any;
   isSelectedName: any;
+  isSelectedCertExpiry: any;
   entityId: any;
   applicationName: any;
   certExpiry: any;
-  isApplicationButtonEnable: any;
+  isApplicationButtonEnable: boolean = false;
   constructor(
     private certService: CertService,
     private fb: FormBuilder,
     private toastr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.ifNoData = true;
+    debugger
     this.certHeaderForm = new FormGroup({
       applicationId: new FormControl('', Validators.required),
-      environment: new FormControl(''),
+      environment: new FormControl('', Validators.required),
       numberProd: new FormControl(''),
       certExpiry: new FormControl(''),
     });
-    this.getCertDetails();
+    this.certHeaderForm.get("numberProd")?.valueChanges.subscribe(selectedValue => {
+      if (event && this.certHeaderForm.value.environment !== 'Prod' &&this.isSelectedCertExpiry == 'Jan 20 2022') {
+        this.isApplicationButtonEnable = true;
+        document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+      }
+      else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd == '') {
+        this.isApplicationButtonEnable = true;
+        // document.getElementById('btnUpdate')?.removeAttribute("disabled");
+        document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+        document.getElementById('btnRevert')?.setAttribute("disabled", "disabled");
+      }
+      else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd !== ''&& this.isSelectedCertExpiry  != 'Jan 20 2022') {
+        this.isApplicationButtonEnable = true;
+        document.getElementById('btnRevert')?.removeAttribute("disabled");
+        document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+  
+      }
+      else {
+        document.getElementById('btnUpdate')?.removeAttribute("disabled");
+      }
+    })
   }
 
   getControl(name: string): string {
@@ -59,13 +82,20 @@ export class FormComponent implements OnInit {
   }
 
   applicationIdOnChange() {
+    debugger
+    if (this.certHeaderForm.get('applicationId')?.value.length > 0 && this.certHeaderForm.get('environment')?.value.length > 0) {
+      this.getCertDetails(this.certHeaderForm.get('applicationId')?.value)
+    }
+    else {
+      this.applicationData = [];
+    }
     debugger;
-    this.certHeaderForm.get('applicationId')?.valueChanges.subscribe((x) => {
-      this.appId = x;
-      if (this.certHeaderForm.touched || this.certHeaderForm.valid) {
-        this.toastr.error('please give valid information');
-      }
-    });
+    // this.certHeaderForm.get('applicationId')?.valueChanges.subscribe((x) => {
+    //   this.appId = x;
+    //   if (this.certHeaderForm.touched || this.certHeaderForm.valid) {
+    //     this.toastr.error('please give valid information');
+    //   }
+    // });
     //   if(!event.value.touched || !event.value.valid){
     //     this.toastr.error("please give valid information");
     // }
@@ -79,13 +109,15 @@ export class FormComponent implements OnInit {
   //   });
   // }
 
-  getCertDetails(applicationId?: string) {
+  getCertDetails(applicationId?: string, typeIcon = TYPE.SUCCESS, timerProgressBar: boolean = false) {
     let filedata = new AppData(
       this.certHeaderForm.get('applicationId')?.value,
       'a123456'
     );
     this.loading = true;
-
+    if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd == '') {
+      this.isApplicationButtonEnable = false;
+    }
     var data = [
       {
         name: 'AP130074_EI_SAML_AnsibleAWX_DEV',
@@ -95,77 +127,28 @@ export class FormComponent implements OnInit {
       {
         name: 'asdgasdg',
         entityId: 'https://lab.erer.4grfmr.com/',
-        id: 'gasdgasdgasdgg',
+        id: 'izgkjfgafgsajfg',
       },
       {
         name: '32rt23fr234f4f',
         entityId: 'https://lab.opopopo.4grfmr.com/',
         id: 'hfghgfhhhhgf',
-      },
-      {
-        name: '32r1313131t23fr234f4f',
-        entityId: 'https://lab.gfghfhf.4grfmr.com/',
-        id: 'hfjjfgjgjfjjfgjgfjfhgfhhhhgf',
-      },
-      {
-        name: '7567567567',
-        entityId: 'https://lab.cbcbcb.4grfmr.com/',
-        id: 'popopopopopo',
-      },
-      {
-        name: '0505050505050',
-        entityId: 'https://lab.fghgfhfhf.4grfmr.com/',
-        id: 'iyiyiyiyiyiyiy',
-      },
-      {
-        name: '91919191919',
-        entityId: 'https://lab.fghfhvsdvc.4grfmr.com/',
-        id: 'uiuiuiuiuiuiuii',
-      },
-      {
-        name: '88889898989898',
-        entityId: 'https://lab.home.4grfmr.com/',
-        id: 'tetetetetetet',
-      },
-      {
-        name: '6565656565656',
-        entityId: 'https://lab.asda.4grfmr.com/',
-        id: 'weewewewewewewe',
-      },
-      {
-        name: 'ytwewewwewew',
-        entityId: 'https://lab.dasdaerw.4grfmr.com/',
-        id: '880808080',
-      },
-      {
-        name: 'ddadadsadsads',
-        entityId: 'https://lab.aeaea.4grfmr.com/',
-        id: '555505',
-      },
-      {
-        name: 'yyuyuyuyuyuyu',
-        entityId: 'https://lab.aewe.4grfmr.com/',
-        id: '55455455454545',
-      },
-      {
-        name: 'pipipipip',
-        entityId: 'https://lab.ptptpt.4grfmr.com/',
-        id: '4454564',
-      },
-      {
-        name: 'popooasas',
-        entityId: 'https://lab.googogo.4grfmr.com/',
-        id: '9090909',
-      },
-      {
-        name: 'tuutututu',
-        entityId: 'https://lab.google.4grfmr.com/',
-        id: '80825',
-      },
+      }
     ];
 
     this.applicationData = data;
+    if (this.applicationData && this.applicationData.length > 0) {
+      this.applicationData.forEach((element, index) => {
+        if (element.id == 'izgkjfgafgsajfg') {
+          // certExpiry
+          this.applicationData[index]["certExpiry"] = 'Jan 20 2022';
+        }
+        else {
+          this.applicationData[index]["certExpiry"] = 'may 20 , 2023';
+        }
+      });
 
+    }
     this.certService.getCertDetails(filedata).subscribe(
       (data: any) => {
         //this.certList = data;
@@ -185,9 +168,18 @@ export class FormComponent implements OnInit {
         this.ifNoData = false;
       },
       (error: any) => {
-        this.loading = false;
-        this.toastr.error(error);
-        this.ifNoData = true;
+        Swal.fire({
+          toast: true,
+          position: 'top',
+          showConfirmButton: false,
+          icon: typeIcon,
+          timerProgressBar,
+          timer: 5000,
+          title: 'Service now authorization failed'
+        })
+        // this.loading = false;
+        // this.toastr.error('Service now authorization failed');
+        // this.ifNoData = true;
       }
     );
   }
@@ -228,11 +220,72 @@ export class FormComponent implements OnInit {
   applicationCheckEvent(event: any) {
     debugger;
     console.log(event);
+    if (event && this.certHeaderForm.value.environment !== 'Prod' && event.certExpiry != 'Jan 20 2022') {
+      this.isApplicationButtonEnable = true;
+      document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+    }
+    else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd == '') {
+      this.isApplicationButtonEnable = true;
+      document.getElementById('btnUpdate')?.removeAttribute("disabled");
+      document.getElementById('btnRevert')?.setAttribute("disabled", "disabled");
+
+    }
+    else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd !== ''&& event.certExpiry != 'Jan 20 2022') {
+      this.isApplicationButtonEnable = true;
+      document.getElementById('btnRevert')?.removeAttribute("disabled");
+      document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+
+    }
+    else {
+      this.isApplicationButtonEnable = false;
+      document.getElementById('btnUpdate')?.removeAttribute("disabled");
+    }
+
+    //   this.isApplicationButtonEnable = false;
+    // }
+
     this.isSelectedName = event.name;
+    this.isSelectedCertExpiry = event.certExpiry;
+
   }
 
-  onChange(event: any) {
-    this.isApplicationButtonEnable = event.target.checked;
+  onChange(event: any, obj: any) {
+    debugger
+
+    // if (event && event.certExpiry != 'Jan 20 2022') {
+    //   this.isApplicationButtonEnable = true;
+    //   document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+    // } else {
+    //   // this.isApplicationButtonEnable=false;
+
+    //   document.getElementById('btnUpdate')?.removeAttribute("disabled");
+    // }
+
+    console.log(event);
+    if (event && this.certHeaderForm.value.environment !== 'Prod' && event.certExpiry != 'Jan 20 2022') {
+      this.isApplicationButtonEnable = true;
+      document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+    }
+    else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd == '') {
+      this.isApplicationButtonEnable = true;
+      // document.getElementById('btnUpdate')?.removeAttribute("disabled");
+      document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+      document.getElementById('btnRevert')?.setAttribute("disabled", "disabled");
+    }
+    else if (this.certHeaderForm && this.certHeaderForm.value.environment == 'Prod' && this.certHeaderForm.value.numberProd !== ''&& event.certExpiry != 'Jan 20 2022') {
+      this.isApplicationButtonEnable = true;
+      document.getElementById('btnRevert')?.removeAttribute("disabled");
+      document.getElementById('btnUpdate')?.setAttribute("disabled", "disabled");
+
+    }
+    else {
+      this.isApplicationButtonEnable = event.target.checked;
+
+      document.getElementById('btnUpdate')?.removeAttribute("disabled");
+    }
+    this.isSelectedName = obj.name;
+    this.isSelectedCertExpiry = event.certExpiry;
+
   }
 
   editEntityEvent(event: any) {
@@ -279,4 +332,5 @@ export class FormComponent implements OnInit {
       }
     );
   }
+
 }
